@@ -1,9 +1,8 @@
 ﻿using System;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.TextCore.Text;
+using Scripts;
 using UnityEngine;
 
-namespace Scripts
+namespace Root.Scripts.Adam
 {
     public class LightSource : MonoBehaviour
     {
@@ -19,9 +18,17 @@ namespace Scripts
             _hits = new RaycastHit[10];
             _iSwitchArray = new ISwitch[10];
         }
+        
+        //TEST REMOVE START
+        private void OnCollisionEnter(Collision collision)
+        {
+            Debug.Log("collision enter");
+        }
+        //TEST REMOVE END
 
         private void OnTriggerStay(Collider other)
         {
+            Debug.Log("trigger stay");
             RaycastHit hit;
             if (Physics.Raycast(transform.position, (other.transform.position - transform.position), out hit, everythingMask))
             {
