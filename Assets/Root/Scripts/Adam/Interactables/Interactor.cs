@@ -31,6 +31,18 @@ public class Interactor : MonoBehaviour
 
                 if (Keyboard.current.eKey.wasPressedThisFrame) _interactable.Interact(this);
             }
+
+            if (_numFound > 1)
+            {
+                _interactable = _colliders[1].GetComponent<IInteractable>();
+
+                if (_interactable != null)
+                {
+                    if (!_interactionUI.isDisplayed) _interactionUI.SetUp(_interactable.InteractionPrompt);
+
+                    if (Keyboard.current.eKey.wasPressedThisFrame) _interactable.Interact(this);
+                }
+            }
         }
         else
         {
